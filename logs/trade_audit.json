@@ -1,0 +1,23 @@
+[
+  {
+    "timestamp": "2026-01-07T22:07:56.623466+00:00",
+    "decision_id": "D000001",
+    "vol_prob": 0.00019214985744305982,
+    "trend_prob": 0.0071267095464171825,
+    "liq_prob": 1.0000000036274914e-15,
+    "lattice_state": "1",
+    "regime_confidence": 0.9951207603974259,
+    "signal": "ENTER_LONG",
+    "signal_source": "regime_model",
+    "order_type": null,
+    "order_qty": null,
+    "order_notional": null,
+    "order_id": "c67a6b28-71ee-4c61-bb40-b1b717bb44a0",
+    "order_status": "accepted",
+    "fill_price": null,
+    "slippage_bps": null,
+    "model_version": "9cb7d66",
+    "config_hash": "99914b93",
+    "notes": "Vol=0, Trend=0, Liq=0"
+  }
+]

@@ -1,0 +1,2 @@
+timestamp,symbol,action,signal_source,expected_price,order_id,order_status,filled_price,filled_qty,slippage_bps,notes
+2026-01-07T22:07:56.294089+00:00,GLD,ENTER_LONG,regime_model,409.34000000000003,c67a6b28-71ee-4c61-bb40-b1b717bb44a0,accepted,,,,"Notional: $193234.77. Vol=0, Trend=0, Liq=0"

@@ -217,6 +217,9 @@ class AlpacaAdapter:
             "cls": TimeInForce.CLS,  # At market close
         }
         
+        if notional is not None:
+            notional = round(notional, 2)
+            
         order_data = MarketOrderRequest(
             symbol=symbol,
             side=OrderSide.BUY if side == "buy" else OrderSide.SELL,
