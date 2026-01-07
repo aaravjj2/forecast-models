@@ -27,7 +27,7 @@ sys.path.insert(0, str(Path(__file__).parent.parent))
 from data.price_fetcher import PriceFetcher
 from features.feature_builder import FeatureBuilder
 from features.regime_labeler import RegimeLabeler, MarketRegime, TrendQuality, LiquidityRegime
-from strategies.regime_lattice import LatticeState, determine_state
+from strategies.regime_lattice import LatticeState, RegimeLattice
 from utils.config import CONFIG
 
 logging.basicConfig(level=logging.INFO)
@@ -214,8 +214,15 @@ class LiveSignalGenerator:
         # Predict regimes
         vol_pred, trend_pred, liq_pred, probs = self._predict_regimes(features)
         
-        # Determine lattice state
-        lattice_state = determine_state(vol_pred, trend_pred, liq_pred)
+        # Determine lattice state using RegimeLattice class
+        lattice = RegimeLattice()
+        # For single-point predictions, use simple logic
+        if liq_pred == 1 or vol_pred == 1:
+            lattice_state = LatticeState.HOSTILE
+        elif trend_pred == 1:
+            lattice_state = LatticeState.FAVORABLE
+        else:
+            lattice_state = LatticeState.NEUTRAL
         
         # Calculate confidence (simple average of prediction confidences)
         confidence = np.mean([

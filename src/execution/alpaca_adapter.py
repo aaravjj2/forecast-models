@@ -13,9 +13,24 @@ Environment Variables Required:
 import os
 import logging
 from datetime import datetime, timezone
+from pathlib import Path
 from typing import Optional, Dict, Any, Literal
 from dataclasses import dataclass, field
 from enum import Enum
+
+# Load keys.env
+from dotenv import load_dotenv
+
+# Look for keys.env in parent directories
+_keys_env_paths = [
+    Path(__file__).parent.parent.parent.parent / "keys.env",  # /home/aarav/Forecast models/keys.env
+    Path(__file__).parent.parent.parent / "keys.env",  # project root
+    Path.home() / "Forecast models" / "keys.env",
+]
+for _path in _keys_env_paths:
+    if _path.exists():
+        load_dotenv(_path)
+        break
 
 # Alpaca SDK
 try:
@@ -88,23 +103,24 @@ class AlpacaAdapter:
         Initialize Alpaca adapter.
         
         Args:
-            api_key: Alpaca API key (or set ALPACA_API_KEY env var)
-            secret_key: Alpaca secret key (or set ALPACA_SECRET_KEY env var)
+            api_key: Alpaca API key (or set APCA_API_KEY_ID env var)
+            secret_key: Alpaca secret key (or set APCA_API_SECRET_KEY env var)
             base_url: API base URL (defaults to paper trading)
             paper: Use paper trading (default True)
         """
-        self.api_key = api_key or os.environ.get("ALPACA_API_KEY")
-        self.secret_key = secret_key or os.environ.get("ALPACA_SECRET_KEY")
+        # Try multiple env var names for flexibility
+        self.api_key = api_key or os.environ.get("APCA_API_KEY_ID") or os.environ.get("ALPACA_API_KEY")
+        self.secret_key = secret_key or os.environ.get("APCA_API_SECRET_KEY") or os.environ.get("ALPACA_SECRET_KEY")
         
         if not self.api_key or not self.secret_key:
             raise ValueError(
-                "Alpaca credentials required. Set ALPACA_API_KEY and ALPACA_SECRET_KEY "
-                "environment variables or pass them directly."
+                "Alpaca credentials required. Set APCA_API_KEY_ID and APCA_API_SECRET_KEY "
+                "in keys.env or pass them directly."
             )
         
         self.paper = paper
         self.base_url = base_url or os.environ.get(
-            "ALPACA_BASE_URL",
+            "APCA_ENDPOINT",
             "https://paper-api.alpaca.markets" if paper else "https://api.alpaca.markets"
         )
         
