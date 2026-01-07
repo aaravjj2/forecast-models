@@ -72,3 +72,4 @@ for ticker in ["AAPL", "MSFT", "NVDA", "AMZN", "META", "TSLA"]:
 
 The framework is ready - just needs the syntax issues resolved. All test logic is implemented correctly.
 
+

@@ -150,3 +150,4 @@ class RuleBasedModel(BaseModel):
         self.is_trained = True
 
 
+

@@ -81,3 +81,4 @@ print("\n✓ All environment variables set!")
 print("\nYou can now use these keys in your code via os.getenv()")
 
 
+

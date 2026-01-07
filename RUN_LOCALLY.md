@@ -66,3 +66,4 @@ All results are saved to:
 - This is expected - the pipeline will use Finnhub data only
 - NewsAPI is only a fallback source
 
+

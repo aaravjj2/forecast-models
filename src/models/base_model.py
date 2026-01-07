@@ -100,3 +100,4 @@ class BaseModel(ABC):
         return 2 * abs(prob_up - 0.5)  # Maps [0.5, 1.0] -> [0, 1]
 
 
+

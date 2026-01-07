@@ -1,0 +1,51 @@
+# Live Trading Environment Configuration
+# WARNING: This is a TEMPLATE only.
+# DO NOT modify this file directly in production.
+# All changes require Git PR + review.
+
+environment: live
+
+# ⚠️ LIVE TRADING - REAL MONEY ⚠️
+# This configuration is read-only.
+# Any modification requires:
+# 1. Git PR
+# 2. Manual review
+# 3. Full backtest verification
+
+# Trading
+symbol: SPY
+position_size_pct: 0.90  # More conservative in live
+
+# Kill Switches (STRICTER THAN PAPER)
+kill_switches:
+  max_daily_loss_pct: 2.0  # Tighter than paper
+  min_regime_confidence: 0.4
+  max_consecutive_api_errors: 2
+  max_slippage_multiple: 2.0
+  expected_slippage_bps: 5.0
+
+# Execution
+execution:
+  order_type: market
+  time_in_force: day
+  check_interval_minutes: 5
+
+# Logging (ALWAYS ON)
+logging:
+  level: INFO
+  audit_enabled: true  # NON-OPTIONAL
+  fill_tracking_enabled: true  # NON-OPTIONAL
+
+# Alpaca (credentials from environment variables ONLY)
+alpaca:
+  paper: false
+  # NEVER hardcode credentials
+  # ALPACA_API_KEY: (from env)
+  # ALPACA_SECRET_KEY: (from env)
+
+# Governance
+governance:
+  require_approval: true
+  review_interval_days: 90
+  emergency_contacts:
+    - "operator@example.com"

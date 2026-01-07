@@ -107,3 +107,4 @@ def load_artifact(filepath: str, format: str = 'pickle'):
         raise ValueError(f"Unknown format: {format}")
 
 
+

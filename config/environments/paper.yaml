@@ -1,0 +1,40 @@
+# Paper Trading Environment Configuration
+# This file is READ-ONLY in production
+
+environment: paper
+
+# Trading
+symbol: SPY
+position_size_pct: 0.95  # Use 95% of buying power
+
+# Kill Switches
+kill_switches:
+  max_daily_loss_pct: 3.0
+  min_regime_confidence: 0.3
+  max_consecutive_api_errors: 3
+  max_slippage_multiple: 3.0
+  expected_slippage_bps: 5.0
+
+# Execution
+execution:
+  order_type: market
+  time_in_force: day
+  check_interval_minutes: 5
+
+# Logging
+logging:
+  level: INFO
+  audit_enabled: true
+  fill_tracking_enabled: true
+
+# Alpaca (credentials from environment variables)
+alpaca:
+  paper: true
+  # ALPACA_API_KEY: (from env)
+  # ALPACA_SECRET_KEY: (from env)
+
+# Regime Models
+models:
+  vol_model: models/regimes/vol_regime_model.pkl
+  trend_model: models/regimes/trend_regime_model.pkl
+  liq_model: models/regimes/liq_regime_model.pkl
