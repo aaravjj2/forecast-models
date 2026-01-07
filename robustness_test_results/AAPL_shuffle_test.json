@@ -1,0 +1,9 @@
+{
+  "test": "shuffle_labels",
+  "accuracy": 0.0,
+  "total_return": 0.0,
+  "sharpe": 0.0,
+  "trades": 0,
+  "expected_accuracy": 0.5,
+  "passed": false
+}

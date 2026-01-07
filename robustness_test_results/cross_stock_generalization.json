@@ -1,0 +1,24 @@
+{
+  "train_tickers": [
+    "AAPL",
+    "MSFT",
+    "NVDA",
+    "AMZN"
+  ],
+  "test_tickers": [
+    "META",
+    "TSLA"
+  ],
+  "results": {
+    "META": {
+      "trades": 37,
+      "accuracy": 0.7567567567567568,
+      "coverage": 0.036779324055666
+    },
+    "TSLA": {
+      "trades": 25,
+      "accuracy": 0.52,
+      "coverage": 0.02485089463220676
+    }
+  }
+}
