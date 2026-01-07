@@ -1,0 +1,58 @@
+# Secrets
+*.env
+keys.env
+secrets.json
+.token
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Jupyter
+.ipynb_checkpoints
+*/.ipynb_checkpoints/*
+
+# Editor
+.vscode/
+.idea/
+*.swp
+
+# Testing
+.accuracy_monitor.json
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Logs
+*.log
+robustness_*.log
+
+# Data (Exclude Raw/Processed if locally generated, but we want successful structure)
+# For this repo, we keep the data structure but maybe ignore huge csvs if not needed?
+# User wants the code. Let's ignore cached large data.
+data/raw/prices/*.csv
+data/processed/*.csv
+results/*.csv
+models/**/*.pkl
+models/**/*.model
+
+# OS
+.DS_Store
