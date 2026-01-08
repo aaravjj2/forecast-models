@@ -1,0 +1,216 @@
+{
+    "annotations": {
+        "list": []
+    },
+    "editable": true,
+    "fiscalYearStartMonth": 0,
+    "graphTooltip": 0,
+    "id": null,
+    "links": [],
+    "liveNow": false,
+    "panels": [
+        {
+            "datasource": "Prometheus",
+            "fieldConfig": {
+                "defaults": {
+                    "color": {
+                        "mode": "palette-classic"
+                    },
+                    "mappings": [],
+                    "thresholds": {
+                        "mode": "absolute",
+                        "steps": [
+                            {
+                                "color": "green",
+                                "value": null
+                            }
+                        ]
+                    }
+                }
+            },
+            "gridPos": {
+                "h": 8,
+                "w": 12,
+                "x": 0,
+                "y": 0
+            },
+            "id": 1,
+            "options": {
+                "legend": {
+                    "displayMode": "list"
+                },
+                "tooltip": {
+                    "mode": "single"
+                }
+            },
+            "title": "Daily P&L ($)",
+            "type": "timeseries",
+            "targets": [
+                {
+                    "expr": "volatility_gated_daily_pnl_usd",
+                    "legendFormat": "Daily PnL"
+                }
+            ]
+        },
+        {
+            "datasource": "Prometheus",
+            "fieldConfig": {
+                "defaults": {
+                    "color": {
+                        "mode": "thresholds"
+                    },
+                    "thresholds": {
+                        "mode": "absolute",
+                        "steps": [
+                            {
+                                "color": "green",
+                                "value": null
+                            },
+                            {
+                                "color": "yellow",
+                                "value": 20
+                            },
+                            {
+                                "color": "red",
+                                "value": 50
+                            }
+                        ]
+                    }
+                }
+            },
+            "gridPos": {
+                "h": 8,
+                "w": 12,
+                "x": 12,
+                "y": 0
+            },
+            "id": 2,
+            "options": {},
+            "title": "Slippage (bps)",
+            "type": "histogram",
+            "targets": [
+                {
+                    "expr": "volatility_gated_slippage_bps",
+                    "legendFormat": "Slippage"
+                }
+            ]
+        },
+        {
+            "datasource": "Prometheus",
+            "fieldConfig": {
+                "defaults": {
+                    "mappings": [
+                        {
+                            "options": {
+                                "0": {
+                                    "text": "OFF"
+                                }
+                            },
+                            "type": "value"
+                        },
+                        {
+                            "options": {
+                                "1": {
+                                    "text": "ACTIVE"
+                                }
+                            },
+                            "type": "value"
+                        }
+                    ],
+                    "thresholds": {
+                        "mode": "absolute",
+                        "steps": [
+                            {
+                                "color": "green",
+                                "value": null
+                            },
+                            {
+                                "color": "red",
+                                "value": 1
+                            }
+                        ]
+                    }
+                }
+            },
+            "gridPos": {
+                "h": 4,
+                "w": 6,
+                "x": 0,
+                "y": 8
+            },
+            "id": 3,
+            "options": {
+                "colorMode": "value",
+                "graphMode": "none"
+            },
+            "title": "Kill Switch",
+            "type": "stat",
+            "targets": [
+                {
+                    "expr": "volatility_gated_kill_switch_active",
+                    "legendFormat": "Status"
+                }
+            ]
+        },
+        {
+            "datasource": "Prometheus",
+            "gridPos": {
+                "h": 4,
+                "w": 6,
+                "x": 6,
+                "y": 8
+            },
+            "id": 4,
+            "options": {
+                "colorMode": "value",
+                "graphMode": "area"
+            },
+            "title": "Orders Today",
+            "type": "stat",
+            "targets": [
+                {
+                    "expr": "increase(volatility_gated_orders_total[1d])",
+                    "legendFormat": "Orders"
+                }
+            ]
+        },
+        {
+            "datasource": "Prometheus",
+            "gridPos": {
+                "h": 8,
+                "w": 12,
+                "x": 0,
+                "y": 12
+            },
+            "id": 5,
+            "options": {},
+            "title": "Regime State",
+            "type": "timeseries",
+            "targets": [
+                {
+                    "expr": "volatility_gated_regime_state",
+                    "legendFormat": "{{symbol}}"
+                }
+            ]
+        }
+    ],
+    "refresh": "30s",
+    "schemaVersion": 36,
+    "style": "dark",
+    "tags": [
+        "volatility-gated",
+        "trading"
+    ],
+    "templating": {
+        "list": []
+    },
+    "time": {
+        "from": "now-24h",
+        "to": "now"
+    },
+    "timepicker": {},
+    "timezone": "America/New_York",
+    "title": "Volatility-Gated Strategy",
+    "uid": "voltgated001",
+    "version": 1
+}
